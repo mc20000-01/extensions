@@ -17,9 +17,9 @@ extension:
       acceptReporters: true
       items:
         - text: "yes"
-          value: "yes"
+          value: "true"
         - text: "no"
-          value: "no"
+          value: "false"
 
 blocks:
   - opcode: commentReporter

@@ -7,7 +7,7 @@ export function commentInline(args, util) {
 }
 
 export function commentCblock(args, util) {
-  if (args.RUN === "yes") {
+  if (args.RUN === "true") {
     return true;
   }
   return false;
