@@ -1,11 +1,14 @@
 {
   "name": "comments",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "a commeting extension for scratchVM mods",
   "license": "Apache-2.0",
   "author": "mc20000-01",
   "type": "module",
   "devDependencies": {
     "@twext/twext": "^1.1.0"
+  },
+  "scripts": {
+    "build:comments": "twext build --config comments/twext.yml"
   }
 }

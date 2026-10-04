@@ -1,24 +1,30 @@
 name: "comments"
-version: "0.1.1"
+version: "0.2.0"
 description: "a commeting extension for scratchVM mods"
 author: "sandisk/mc20000 jamie@sdisk.us"
 license: "Apache-2.0"
 
 entryPoint: "src/index.js"
-outputPath: "dist/extension.js"
+outputPath: "../dist/comments.js"
 
 extension:
   id: "comments"
   name: "Comments"
   className: "Comments"
-  color1: "#83eb34"
-  color2: "#a3d94e"
-  color3: "#4a6635"
+  color1: "#a2b0ba"
+  menus:
+    boolean:
+      acceptReporters: true
+      items:
+        - text: "yes"
+          value: "yes"
+        - text: "no"
+          value: "no"
 
 blocks:
   - opcode: commentReporter
     blockType: reporter
-    text: "comment [COMMENT] passthrough [PASS]"
+    text: "comment: [COMMENT] passthrough: [PASS]"
     arguments:
       COMMENT:
         type: string
@@ -28,18 +34,18 @@ blocks:
         defaultValue: "pass through"
   - opcode: commentInline
     blockType: command
-    text: "comment [COMMENT]"
+    text: "comment: [COMMENT]"
     arguments:
       COMMENT:
         type: string
         defaultValue: "comment"
   - opcode: commentCblock
     blockType: cblock
-    text: "comment [COMMENT] run? [RUN]"
+    text: "comment: [COMMENT] run: [RUN]"
     arguments:
       COMMENT:
         type: string
         defaultValue: "comment"
       RUN:
-        type: boolean
-        defaultValue: false
+        type: string
+        menu: boolean
