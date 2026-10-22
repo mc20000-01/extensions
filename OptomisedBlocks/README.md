@@ -1,5 +1,7 @@
 # Optomised Blocks
 
+![version + downloads](https://twexts.sdisk.us/api/v2/badge/@sandisk/optomisedblocks)
+
 Unsandboxed TurboWarp extension.
 
 - `all at once { }` runs its contents like `if <1 = 1>`. This is the old

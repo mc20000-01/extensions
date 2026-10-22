@@ -1,5 +1,7 @@
 # Advanced Timers
 
+![version + downloads](https://twexts.sdisk.us/api/v2/badge/@sandisk/advancedtimers)
+
 Named timers on `performance.now()`, reported in s, ms, µs or ns.
 
 - `start timer [NAME]` / `timer [NAME] in [UNIT]`

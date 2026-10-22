@@ -1,5 +1,7 @@
 # Sense Color
 
+![version + downloads](https://twexts.sdisk.us/api/v2/badge/@sandisk/sensecolor)
+
 TurboWarp extension with one reporter, `color under me`. It returns the
 average hex color of the pixels under the sprite. Pixels offstage are not
 counted. It works for clones.
