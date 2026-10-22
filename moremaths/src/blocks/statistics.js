@@ -218,8 +218,8 @@ export function listRegressionRSquared(args, util) {
 }
 
 export function listSortedText(args, util) {
-  const values = this.listNumbersOf(args.LIST, util);
-  return values ? this.joinNumbers(this.sortedCopy(values)) : "";
+  const values = this.listValuesOf(args.LIST, util);
+  return values ? this.joinNumbers(this.sortedValuesCopy(values)) : "";
 }
 
 export function listCumulativeSum(args, util) {

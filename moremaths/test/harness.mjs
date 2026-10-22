@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import vm from "node:vm";
 import { parse } from "yaml";
 
 const DIST = new URL("../../dist/moremaths.js", import.meta.url);
@@ -6,7 +7,7 @@ const MANIFEST = new URL("../twext.yml", import.meta.url);
 
 let registered = null;
 const listVariables = new Map();
-globalThis.Blockly = { FIELD_NUMBER: "NumberField" };
+const Blockly = { FIELD_NUMBER: "NumberField" };
 
 const Scratch = {
   Cast: {
@@ -41,9 +42,12 @@ const Scratch = {
   },
 };
 globalThis.Scratch = Scratch;
+globalThis.Blockly = Blockly;
 
 const code = fs.readFileSync(DIST, "utf8");
-new Function("Scratch", code)(Scratch);
+// Run the bundle in this context so the extension sees the same globals and
+// keeps its normal speed, without building a function from a string.
+vm.runInThisContext(code, { filename: "moremaths.js" });
 if (registered === null) throw new Error("extension did not register");
 
 const manifest = parse(fs.readFileSync(MANIFEST, "utf8"));
@@ -112,8 +116,9 @@ export function defaultArgs(entry, overrides = {}) {
     if (def.menu === "list") {
       args[name] = listRef();
     } else if (def.menu) {
+      // The VM uses the manifest default, so the harness has to as well.
       const items = menuItems[def.menu] || [];
-      args[name] = items[0];
+      args[name] = def.defaultValue !== undefined ? def.defaultValue : items[0];
     } else if (def.type === "number") {
       args[name] = def.defaultValue === undefined ? 0 : def.defaultValue;
     } else if (def.type === "boolean") {

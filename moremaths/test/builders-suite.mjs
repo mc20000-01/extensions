@@ -292,7 +292,7 @@ eq(
 eq(
   "normalised list",
   call("normalisedList", { LIST: lst([2, 4, 6]) }),
-  "-1, 0, 1",
+  "-1.224744871391589, 0, 1.224744871391589",
 );
 eq(
   "moving average",

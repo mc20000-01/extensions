@@ -53,7 +53,8 @@ export function normalisedList(args, util) {
   const values = this.listNumbersOf(args.LIST, util);
   if (values === null) return [];
   const mean = this.meanOf(values);
-  const deviation = this.standardDeviationOf(values, true);
+  // Population deviation, so this agrees with the listZScore block.
+  const deviation = this.standardDeviationOf(values, false);
   if (!(deviation > 0)) return values.map(() => 0);
   return values.map((value) => (value - mean) / deviation);
 }

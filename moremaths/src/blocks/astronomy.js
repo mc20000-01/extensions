@@ -63,7 +63,8 @@ export function orbitalEscapeEnergy(args) {
   const mass = this.num(args.MASS);
   const radius = Math.abs(this.num(args.RADIUS));
   if (!(radius > 0)) return NaN;
-  return (PHYSICS_CONSTANTS.gravitationalConstant * mass) / radius;
+  // Escape energy per kilogram is G*M/(2R), half the potential energy.
+  return (PHYSICS_CONSTANTS.gravitationalConstant * mass) / (2 * radius);
 }
 
 export function schwarzschildRadius(args) {

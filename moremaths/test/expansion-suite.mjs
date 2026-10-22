@@ -869,7 +869,7 @@ close(
     CHARGE: 1.602176634e-19,
     FIELD: 1,
   }),
-  1.75882001076e11,
+  2.79924898729e10,
   1e-8,
 );
 close(
@@ -1517,7 +1517,7 @@ close(
   within("normalised mean", mean(z), 0, 1e-12);
   close(
     "normalised stddev",
-    Math.sqrt(z.reduce((a, b) => a + b * b, 0) / (z.length - 1)),
+    Math.sqrt(z.reduce((a, b) => a + b * b, 0) / z.length),
     1,
     1e-9,
   );

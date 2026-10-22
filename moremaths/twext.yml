@@ -1,5 +1,5 @@
 name: "More Maths"
-version: "0.1.1"
+version: "0.1.2"
 description: "More advanced maths blocks"
 author: "sandisk/mc20000 jamie@sdisk.us"
 license: "Apache-2.0"
@@ -1149,6 +1149,7 @@ blocks:
     arguments:
       CONSTANT:
         type: string
+        defaultValue: "pi"
         menu: constant
   - blockType: label
     text: "Rounding & Signs"
@@ -1355,7 +1356,7 @@ blocks:
         defaultValue: 1
   - opcode: arcCotangent
     blockType: reporter
-    text: "arccot of [VALUE] in degrees"
+    text: "arccot of [VALUE] in degrees (0 to 180)"
     arguments:
       VALUE:
         type: number
@@ -1477,6 +1478,7 @@ blocks:
         defaultValue: 1
       UNIT:
         type: string
+        defaultValue: "degrees"
         menu: unit
   - opcode: angleUnitToRadians
     blockType: reporter
@@ -1487,6 +1489,7 @@ blocks:
         defaultValue: 180
       UNIT:
         type: string
+        defaultValue: "radians"
         menu: unit
   - opcode: wrapAngle
     blockType: reporter
@@ -2088,7 +2091,7 @@ blocks:
         defaultValue: 30
   - opcode: primorial
     blockType: reporter
-    text: "primorial of [N] (product of every prime up to [N])"
+    text: "primorial of [N] (product of every prime up to N)"
     arguments:
       N:
         type: number
@@ -2265,7 +2268,7 @@ blocks:
         defaultValue: 12345
   - opcode: powerOfTen
     blockType: reporter
-    text: "power of ten in [N]"
+    text: "power of ten in [N] (the exponent, so 12345 gives 4)"
     arguments:
       N:
         type: number
@@ -3208,7 +3211,7 @@ blocks:
         defaultValue: 1
   - opcode: determinant2x2
     blockType: reporter
-    text: "determinant of the matrix [[A],[B] ; [C],[D]]"
+    text: "determinant of the matrix [A] [B] ; [C] [D]"
     arguments:
       A:
         type: number
@@ -3224,7 +3227,7 @@ blocks:
         defaultValue: 4
   - opcode: determinant3x3
     blockType: reporter
-    text: "determinant of the matrix [[A],[B],[C] ; [D],[E],[F] ; [G],[H],[I]]"
+    text: "determinant of the matrix [A] [B] [C] ; [D] [E] [F] ; [G] [H] [I]"
     arguments:
       A:
         type: number
@@ -3540,289 +3543,333 @@ blocks:
     text: "Units & Conversion"
   - opcode: convertMass
     blockType: reporter
-    text: "convert mass [MASS] from [FROM massUnit gram] to [TO massUnit pound]"
+    text: "convert mass [MASS] from [FROM] to [TO]"
     arguments:
       MASS:
         type: number
         defaultValue: 1
       FROM:
         type: string
+        defaultValue: "kilogram"
         menu: massUnit
       TO:
         type: string
+        defaultValue: "pound"
         menu: massUnit
   - opcode: convertLength
     blockType: reporter
-    text: "convert length [LENGTH] from [FROM lengthUnit metre] to [TO lengthUnit foot]"
+    text: "convert length [LENGTH] from [FROM] to [TO]"
     arguments:
       LENGTH:
         type: number
         defaultValue: 1
       FROM:
         type: string
+        defaultValue: "metre"
         menu: lengthUnit
       TO:
         type: string
+        defaultValue: "foot"
         menu: lengthUnit
   - opcode: convertArea
     blockType: reporter
-    text: "convert area [AREA] from [FROM areaUnit squareMetre] to [TO areaUnit squareFoot]"
+    text: "convert area [AREA] from [FROM] to [TO]"
     arguments:
       AREA:
         type: number
         defaultValue: 1
       FROM:
         type: string
+        defaultValue: "squareMetre"
         menu: areaUnit
       TO:
         type: string
+        defaultValue: "squareFoot"
         menu: areaUnit
   - opcode: convertVolume
     blockType: reporter
-    text: "convert volume [VOLUME] from [FROM volumeUnit litre] to [TO volumeUnit gallonUS]"
+    text: "convert volume [VOLUME] from [FROM] to [TO]"
     arguments:
       VOLUME:
         type: number
         defaultValue: 1
       FROM:
         type: string
+        defaultValue: "cubicMetre"
         menu: volumeUnit
       TO:
         type: string
+        defaultValue: "litre"
         menu: volumeUnit
   - opcode: convertTime
     blockType: reporter
-    text: "convert duration [TIME] from [FROM timeUnit second] to [TO timeUnit minute]"
+    text: "convert duration [TIME] from [FROM] to [TO]"
     arguments:
       TIME:
         type: number
         defaultValue: 1
       FROM:
         type: string
+        defaultValue: "second"
         menu: timeUnit
       TO:
         type: string
+        defaultValue: "minute"
         menu: timeUnit
   - opcode: convertSpeed
     blockType: reporter
-    text: "convert speed [SPEED] from [FROM speedUnit metrePerSecond] to [TO speedUnit kilometrePerHour]"
+    text: "convert speed [SPEED] from [FROM] to [TO]"
     arguments:
       SPEED:
         type: number
         defaultValue: 1
       FROM:
         type: string
+        defaultValue: "metrePerSecond"
         menu: speedUnit
       TO:
         type: string
+        defaultValue: "kilometrePerHour"
         menu: speedUnit
   - opcode: convertAcceleration
     blockType: reporter
-    text: "convert acceleration [ACCELERATION] from [FROM accelerationUnit metrePerSecondSquared] to [TO accelerationUnit standardGravity]"
+    text: "convert acceleration [ACCELERATION] from [FROM] to [TO]"
     arguments:
       ACCELERATION:
         type: number
         defaultValue: 1
       FROM:
         type: string
+        defaultValue: "metrePerSecondSquared"
         menu: accelerationUnit
       TO:
         type: string
+        defaultValue: "standardGravity"
         menu: accelerationUnit
   - opcode: convertTemperature
     blockType: reporter
-    text: "convert temperature [TEMPERATURE] from [FROM temperatureUnit celsius] to [TO temperatureUnit fahrenheit]"
+    text: "convert temperature [TEMPERATURE] from [FROM] to [TO]"
     arguments:
       TEMPERATURE:
         type: number
         defaultValue: 1
       FROM:
         type: string
+        defaultValue: "celsius"
         menu: temperatureUnit
       TO:
         type: string
+        defaultValue: "fahrenheit"
         menu: temperatureUnit
   - opcode: convertPressure
     blockType: reporter
-    text: "convert pressure [PRESSURE] from [FROM pressureUnit pascal] to [TO pressureUnit atmosphere]"
+    text: "convert pressure [PRESSURE] from [FROM] to [TO]"
     arguments:
       PRESSURE:
         type: number
         defaultValue: 1
       FROM:
         type: string
+        defaultValue: "pascal"
         menu: pressureUnit
       TO:
         type: string
+        defaultValue: "atmosphere"
         menu: pressureUnit
   - opcode: convertEnergy
     blockType: reporter
-    text: "convert energy [ENERGY] from [FROM energyUnit joule] to [TO energyUnit kilocalorie]"
+    text: "convert energy [ENERGY] from [FROM] to [TO]"
     arguments:
       ENERGY:
         type: number
         defaultValue: 1
       FROM:
         type: string
+        defaultValue: "joule"
         menu: energyUnit
       TO:
         type: string
+        defaultValue: "kilocalorie"
         menu: energyUnit
   - opcode: convertPower
     blockType: reporter
-    text: "convert power [POWER] from [FROM powerUnit watt] to [TO powerUnit kilowatt]"
+    text: "convert power [POWER] from [FROM] to [TO]"
     arguments:
       POWER:
         type: number
         defaultValue: 1
       FROM:
         type: string
+        defaultValue: "watt"
         menu: powerUnit
       TO:
         type: string
+        defaultValue: "kilowatt"
         menu: powerUnit
   - opcode: convertForce
     blockType: reporter
-    text: "convert force [FORCE] from [FROM forceUnit newton] to [TO forceUnit poundForce]"
+    text: "convert force [FORCE] from [FROM] to [TO]"
     arguments:
       FORCE:
         type: number
         defaultValue: 1
       FROM:
         type: string
+        defaultValue: "newton"
         menu: forceUnit
       TO:
         type: string
+        defaultValue: "poundForce"
         menu: forceUnit
   - opcode: convertDataSize
     blockType: reporter
-    text: "convert file size [SIZE] from [FROM dataUnit megabyte] to [TO dataUnit gigabyte]"
+    text: "convert file size [SIZE] from [FROM] to [TO]"
     arguments:
       SIZE:
         type: number
         defaultValue: 1
       FROM:
         type: string
+        defaultValue: "megabyte"
         menu: dataUnit
       TO:
         type: string
+        defaultValue: "gigabyte"
         menu: dataUnit
   - opcode: convertFrequency
     blockType: reporter
-    text: "convert frequency [FREQUENCY] from [FROM frequencyUnit hertz] to [TO frequencyUnit kilohertz]"
+    text: "convert frequency [FREQUENCY] from [FROM] to [TO]"
     arguments:
       FREQUENCY:
         type: number
         defaultValue: 1
       FROM:
         type: string
+        defaultValue: "hertz"
         menu: frequencyUnit
       TO:
         type: string
+        defaultValue: "kilohertz"
         menu: frequencyUnit
   - opcode: convertDensity
     blockType: reporter
-    text: "convert density [DENSITY] from [FROM densityUnit kilogramPerCubicMetre] to [TO densityUnit gramPerLitre]"
+    text: "convert density [DENSITY] from [FROM] to [TO]"
     arguments:
       DENSITY:
         type: number
         defaultValue: 1
       FROM:
         type: string
+        defaultValue: "kilogramPerCubicMetre"
         menu: densityUnit
       TO:
         type: string
+        defaultValue: "gramPerLitre"
         menu: densityUnit
   - opcode: convertAngle
     blockType: reporter
-    text: "convert angle [ANGLE] from [FROM angleUnit degrees] to [TO angleUnit radians]"
+    text: "convert angle [ANGLE] from [FROM] to [TO]"
     arguments:
       ANGLE:
         type: number
         defaultValue: 1
       FROM:
         type: string
+        defaultValue: "degrees"
         menu: angleUnit
       TO:
         type: string
+        defaultValue: "radians"
         menu: angleUnit
   - opcode: convertFuelEconomy
     blockType: reporter
-    text: "convert fuel economy [VALUE] from [FROM fuelUnit milesPerGallonUS] to [TO fuelUnit litresPer100Kilometres]"
+    text: "convert fuel economy [VALUE] from [FROM] to [TO]"
     arguments:
       VALUE:
         type: number
         defaultValue: 1
       FROM:
         type: string
+        defaultValue: "milesPerGallonUS"
         menu: fuelUnit
       TO:
         type: string
+        defaultValue: "litresPer100Kilometres"
         menu: fuelUnit
   - opcode: convertFlow
     blockType: reporter
-    text: "convert flow rate [FLOW] from [FROM flowUnit cubicMetrePerSecond] to [TO flowUnit litrePerMinute]"
+    text: "convert flow rate [FLOW] from [FROM] to [TO]"
     arguments:
       FLOW:
         type: number
         defaultValue: 1
       FROM:
         type: string
+        defaultValue: "cubicMetrePerSecond"
         menu: flowUnit
       TO:
         type: string
+        defaultValue: "litrePerMinute"
         menu: flowUnit
   - opcode: convertTorque
     blockType: reporter
-    text: "convert torque [TORQUE] from [FROM torqueUnit newtonMetre] to [TO torqueUnit poundFoot]"
+    text: "convert torque [TORQUE] from [FROM] to [TO]"
     arguments:
       TORQUE:
         type: number
         defaultValue: 1
       FROM:
         type: string
+        defaultValue: "newtonMetre"
         menu: torqueUnit
       TO:
         type: string
+        defaultValue: "poundFoot"
         menu: torqueUnit
   - opcode: convertRadioactivity
     blockType: reporter
-    text: "convert radioactivity [VALUE] from [FROM activityUnit becquerel] to [TO activityUnit curie]"
+    text: "convert radioactivity [VALUE] from [FROM] to [TO]"
     arguments:
       VALUE:
         type: number
         defaultValue: 1
       FROM:
         type: string
+        defaultValue: "becquerel"
         menu: activityUnit
       TO:
         type: string
+        defaultValue: "curie"
         menu: activityUnit
   - opcode: convertDose
     blockType: reporter
-    text: "convert radiation dose [DOSE] from [FROM doseUnit gray] to [TO doseUnit sievert]"
+    text: "convert radiation dose [DOSE] from [FROM] to [TO]"
     arguments:
       DOSE:
         type: number
         defaultValue: 1
       FROM:
         type: string
+        defaultValue: "gray"
         menu: doseUnit
       TO:
         type: string
+        defaultValue: "sievert"
         menu: doseUnit
   - opcode: convertUnit
     blockType: reporter
-    text: "convert [VALUE] from [FROM anyUnit kilogram] to [TO anyUnit pound]"
+    text: "convert [VALUE] from [FROM] to [TO]"
     arguments:
       VALUE:
         type: number
         defaultValue: 1
       FROM:
         type: string
+        defaultValue: "kilogram"
         menu: anyUnit
       TO:
         type: string
+        defaultValue: "pound"
         menu: anyUnit
   - blockType: label
     text: "Mass"
@@ -4050,6 +4097,7 @@ blocks:
     arguments:
       UNIT:
         type: string
+        defaultValue: "kilogram"
         menu: anyUnit
   - opcode: unitSymbol
     blockType: reporter
@@ -4057,6 +4105,7 @@ blocks:
     arguments:
       UNIT:
         type: string
+        defaultValue: "kilogram"
         menu: anyUnit
   - opcode: unitName
     blockType: reporter
@@ -4064,6 +4113,7 @@ blocks:
     arguments:
       UNIT:
         type: string
+        defaultValue: "kilogram"
         menu: anyUnit
   - opcode: unitDetail
     blockType: reporter
@@ -4071,6 +4121,7 @@ blocks:
     arguments:
       UNIT:
         type: string
+        defaultValue: "kilogram"
         menu: anyUnit
   - opcode: unitKeyForSymbol
     blockType: reporter
@@ -4080,10 +4131,11 @@ blocks:
         type: string
   - opcode: unitsInDimension
     blockType: reporter
-    text: "list all [DIMENSION unitDimension mass] units"
+    text: "list all [DIMENSION] units"
     arguments:
       DIMENSION:
         type: string
+        defaultValue: "mass"
         menu: unitDimension
   - opcode: unitDimensionsList
     blockType: reporter
@@ -5094,7 +5146,7 @@ blocks:
         defaultValue: 0.5
   - opcode: cauchyStdDev
     blockType: reporter
-    text: "standard deviation of cauchy distribution (undefined)"
+    text: "standard deviation of cauchy distribution (undefined, so infinity)"
   - opcode: listShannonEntropy
     blockType: reporter
     text: "Shannon entropy in bits of list [LIST]"
@@ -5106,10 +5158,11 @@ blocks:
     text: "Physics"
   - opcode: physicalConstant
     blockType: reporter
-    text: "physical constant [CONSTANT physicalConstant speedOfLight (c)]"
+    text: "physical constant [CONSTANT]"
     arguments:
       CONSTANT:
         type: string
+        defaultValue: "speedOfLight"
         menu: physicalConstant
   - opcode: physicsConstantList
     blockType: reporter
@@ -5546,7 +5599,7 @@ blocks:
         defaultValue: 443
   - opcode: dopplerShift
     blockType: reporter
-    text: "observed frequency [FREQUENCY] Hz from source at [SPEED] m/s (1 = approaching)"
+    text: "observed frequency [FREQUENCY] Hz from source at [SPEED] m/s ([APPROACHING] = approaching)"
     arguments:
       SPEED:
         type: number
@@ -5870,7 +5923,7 @@ blocks:
         defaultValue: 90
   - opcode: cyclotronFrequency
     blockType: reporter
-    text: "cyclotron frequency of [MASS] kg with charge [CHARGE] C in [FIELD] T"
+    text: "cyclotron frequency of [MASS] kg with charge [CHARGE] C in [FIELD] T (Hz)"
     arguments:
       MASS:
         type: number
@@ -5943,9 +5996,6 @@ blocks:
       PRESSURE:
         type: number
         defaultValue: 101325
-      VOLUME:
-        type: number
-        defaultValue: 0.0246
   - opcode: idealGasTemperature
     blockType: reporter
     text: "temperature of [AMOUNT] mol at [PRESSURE] Pa in [VOLUME] m³"

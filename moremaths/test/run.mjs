@@ -8,6 +8,8 @@ const suites = [
   "legacy-suite.mjs",
   "units-mechanics-suite.mjs",
   "builders-suite.mjs",
+  "regression-suite.mjs",
+  "manifest-suite.mjs",
 ];
 const tools = process.argv.slice(2);
 const extra = tools.length > 0 ? tools : [];

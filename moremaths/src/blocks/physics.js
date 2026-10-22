@@ -470,7 +470,11 @@ export function magneticForce(args) {
 export function cyclotronFrequency(args) {
   const mass = this.num(args.MASS);
   if (mass === 0) return NaN;
-  return (Math.abs(this.num(args.CHARGE)) * this.num(args.FIELD)) / mass;
+  // Cyclotron frequency in hertz: f = qB/(2*pi*m).
+  return (
+    (Math.abs(this.num(args.CHARGE)) * this.num(args.FIELD)) /
+    (2 * Math.PI * Math.abs(mass))
+  );
 }
 
 export function thermalEnergyChange(args) {

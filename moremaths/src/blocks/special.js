@@ -17,18 +17,7 @@ export function errorFunction(args) {
 }
 
 export function inverseErrorFunction(args) {
-  const target = this.num(args.Y);
-  if (target <= -1 || target >= 1) return NaN;
-  let estimate = this.clampNum(target, -0.9999999, 0.9999999);
-  for (let i = 0; i < 80; i++) {
-    const error = this.erfOf(estimate) - target;
-    const slope = (2 / Math.sqrt(Math.PI)) * Math.exp(-estimate * estimate);
-    if (slope === 0) break;
-    const next = estimate - error / slope;
-    if (!Number.isFinite(next)) break;
-    estimate = next;
-  }
-  return estimate;
+  return this.inverseErrorFunctionOf(args.Y);
 }
 
 export function stirlingApproximation(args) {

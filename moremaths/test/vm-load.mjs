@@ -152,6 +152,31 @@ ok(
   badArgs.slice(0, 8).join(" "),
 );
 
+// scratch-vm turns every "[name]" in a block's text into an input, so a name
+// that is not a declared argument silently turns into plain message text and
+// the handler reads undefined for that argument.
+const badPlaceholders = [];
+for (const block of info.blocks) {
+  if (!block.opcode || typeof block.text !== "string") continue;
+  const declared = Object.keys(block.arguments || {});
+  const found = [];
+  let match;
+  const pattern = /\[(.+?)]/g;
+  while ((match = pattern.exec(block.text)) !== null) found.push(match[1]);
+  for (const name of found) {
+    if (!declared.includes(name))
+      badPlaceholders.push(`${block.opcode} [${name}]`);
+  }
+  for (const name of declared) {
+    if (!found.includes(name)) badPlaceholders.push(`${block.opcode} ${name}`);
+  }
+}
+ok(
+  "block text placeholders match the declared arguments",
+  badPlaceholders.length === 0,
+  badPlaceholders.slice(0, 8).join(" "),
+);
+
 const menuNames = Object.keys(info.menus);
 for (const name of menuNames) {
   const items = info.menus[name].items;

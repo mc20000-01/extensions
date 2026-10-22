@@ -74,13 +74,11 @@ export function studentTSample(args) {
 export function shuffledList(args, util) {
   const values = this.listValuesOf(args.LIST, util);
   if (values === null) return [];
-  return this.shuffledValues(
-    values.map((value) => Scratch.Cast.toNumber(value)),
-  );
+  return this.shuffledValues(values);
 }
 
 export function randomSampleWithoutReplacement(args, util) {
-  const values = this.listNumbersOf(args.LIST, util);
+  const values = this.listValuesOf(args.LIST, util);
   if (values === null) return [];
   return this.sampledWithoutReplacement(values, args.COUNT);
 }
@@ -421,7 +419,8 @@ export function cauchyMean(args) {
 }
 
 export function cauchyStdDev(args) {
-  return "Infinity";
+  // The Cauchy distribution has no standard deviation; report it as infinite.
+  return Infinity;
 }
 
 export function binomialMean(args) {

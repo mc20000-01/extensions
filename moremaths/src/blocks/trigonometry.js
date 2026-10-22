@@ -36,7 +36,8 @@ export function arcTangent(args) {
 }
 
 export function arcCotangent(args) {
-  return this.radiansToDegrees(Math.atan(1 / this.num(args.VALUE)));
+  // arccot(x) = 90° - arctan(x), so the result lands in (0, 180).
+  return 90 - this.radiansToDegrees(Math.atan(this.num(args.VALUE)));
 }
 
 export function arcTangent2(args) {

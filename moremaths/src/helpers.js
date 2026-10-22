@@ -153,8 +153,9 @@ export function lucasOf(value) {
 export function tribonacciOf(value) {
   const n = Math.trunc(Scratch.Cast.toNumber(value));
   if (!Number.isFinite(n) || n < 0) return NaN;
+  // 0, 0, 1, 1, 2, 4, 7, ... so this matches tribonacciSequenceList.
   let a = 0;
-  let b = 1;
+  let b = 0;
   let c = 1;
   for (let i = 0; i < n; i++) {
     const next = a + b + c;
@@ -544,6 +545,15 @@ export function roundedTo(value, places) {
 
 export function sortedCopy(values) {
   return values.slice().sort((a, b) => a - b);
+}
+
+export function sortedValuesCopy(values) {
+  return values.slice().sort((a, b) => {
+    const left = Number(a);
+    const right = Number(b);
+    if (Number.isFinite(left) && Number.isFinite(right)) return left - right;
+    return String(a).localeCompare(String(b));
+  });
 }
 
 export function sumOf(values) {
