@@ -17,4 +17,6 @@ TurboWarp extensions.
 | [Comments](comments)                | Comment blocks that hold a note and do nothing.                                                 |
 
 Build one of them with `twext build` in its folder, or build everything with
-`./build-all.sh`.
+`./build-all.sh`. `./make-all.sh --authed -m "message"` (or `--token TOKEN`
+instead of `--authed`) builds and publishes every extension, then commits and
+pushes.
